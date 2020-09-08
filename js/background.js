@@ -1,5 +1,3 @@
-
-
 const URLs = {
   EXTENSIONS: "chrome://extensions"
 };
@@ -24,11 +22,12 @@ const actionSpec = {
   name: "Chrome Special URLs",
   actions: {
     EXTENSIONS: {
-      f: openURL(URLs[Extensions])
+      displayName: "Chrome: Extensions",
+      f: () => openURL(URLs["EXTENSIONS"])
     }
   }
 };
 
-function openURL() {
-    
+function openURL(url) {
+    chrome.tabs.create({url})
 }
