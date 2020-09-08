@@ -1,5 +1,5 @@
 const URLs = {
-  EXTENSIONS: "chrome://extensions"
+  EXTENSIONS: "chrome://extensions/"
 };
 
 chrome.runtime.onMessageExternal.addListener((request, _, response) => {
@@ -29,5 +29,10 @@ const actionSpec = {
 };
 
 function openURL(url) {
-    chrome.tabs.create({url})
+    chrome.tabs.query({url, currentWindow: true}, (tabs) => {
+        if (tabs.length > 0)
+            chrome.tabs.update(tabs[0].id, {active: true})
+        else 
+          chrome.tabs.create({url})
+    })
 }
