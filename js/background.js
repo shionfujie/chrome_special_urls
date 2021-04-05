@@ -22,7 +22,7 @@ const actionSpec = {
   name: "Chrome Special URLs",
   actions: {
     EXTENSIONS: {
-      displayName: "Chrome: Extensions",
+      displayName: "Manage Extensions",
       f: () => openURL(URLs["EXTENSIONS"])
     }
   }
